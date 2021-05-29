@@ -19,11 +19,11 @@ mongoose.connect('mongodb://localhost/CRUD', {useNewUrlParser: true, useUnifiedT
     console.log('Erro ao se conectar: ' + err)
 })
 
-//Pag q posta as categorias
+//Pag que posta
 app.get('/criar',  (req, res) => {
     res.render( '../views/index');
 })
- //Posta as categorias
+ //Posta 
 app.post("/show", (req, res)=>{
     
     
@@ -39,15 +39,12 @@ app.post("/show", (req, res)=>{
     })
 })
 
-//Pag que mostra as categorias
+//Pag que mostra 
 
 app.get('/ler',  (req, res) => {
  
 Usuario.find().lean().then((usuario) =>{
-    // var lista = usuario.map( (user)=>{
-    //     user.Nome
-    // })
-    // console.log(lista)
+
     res.render("../views/read", {usuario: usuario})
 }).catch((err) =>{
     console.log(err)
@@ -55,7 +52,33 @@ Usuario.find().lean().then((usuario) =>{
 
 })
 
+//Pag que deleta as categorias
 
+app.get("/deletar", (req, res) =>{
+
+Usuario.find().lean().then((usuario) =>{
+
+    res.render("../views/delete", {usuario: usuario})
+}).catch((err) =>{
+    console.log(err)
+    })
+
+
+
+})
+
+
+
+//Deleta categoria
+app.post("/del", (req, res) =>{
+    Usuario.deleteOne({_id: req.body.id}).then(() => {
+        res.redirect("/ler")
+        console.log("Deletado com sucesso")
+    }).catch((err) =>{
+        res.redirect("/ler")
+        console.log(err)
+    })
+})
 
 
 app.listen(8000, () => {
