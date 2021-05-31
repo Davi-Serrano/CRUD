@@ -52,8 +52,44 @@ Usuario.find().lean().then((usuario) =>{
 
 })
 
-//Pag que deleta as categorias
+//Pag que modifica as categorias
+app.get("/mudar", (req, res) => {
 
+    Usuario.find().lean().then((usuario) =>{
+
+        res.render("../views/uptade", {usuario: usuario})
+    }).catch((err) =>{
+        console.log(err)
+        })
+        
+})
+//Mod as Categorias
+app.post("/edit", (req, res) =>{
+
+    
+    Usuario.findOne({_id: req.body.id}).then((usuario) => {
+        
+        usuario.Nome = req.body.Nome
+        usuario.Sobrenome =  req.body.Sobrenome
+        
+       usuario.save().then( () =>{
+
+           res.redirect("/ler")
+           console.log("Deletado com sucesso")
+       }).catch( (err) =>{
+        res.redirect("/ler")
+        console.log("Houve em erro" + err )
+       })
+    
+    }).catch((err) =>{
+        res.redirect("/ler")
+        console.log(err)
+    })
+})
+
+
+
+//Pag que deleta as categorias
 app.get("/deletar", (req, res) =>{
 
 Usuario.find().lean().then((usuario) =>{
@@ -66,8 +102,6 @@ Usuario.find().lean().then((usuario) =>{
 
 
 })
-
-
 
 //Deleta categoria
 app.post("/del", (req, res) =>{
