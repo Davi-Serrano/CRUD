@@ -53,9 +53,9 @@ Usuario.find().lean().then((usuario) =>{
 })
 
 //Pag que modifica as categorias
-app.get("/mudar", (req, res) => {
+app.get("/mudar/:id", (req, res) => {
 
-    Usuario.find().lean().then((usuario) =>{
+    Usuario.findOne({_id: req.params.id}).lean().then((usuario) =>{
 
         res.render("../views/uptade", {usuario: usuario})
     }).catch((err) =>{
@@ -75,7 +75,7 @@ app.post("/edit", (req, res) =>{
        usuario.save().then( () =>{
 
            res.redirect("/ler")
-           console.log("Deletado com sucesso")
+           console.log("Modificado com sucesso")
        }).catch( (err) =>{
         res.redirect("/ler")
         console.log("Houve em erro" + err )

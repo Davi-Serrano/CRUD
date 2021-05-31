@@ -16,26 +16,30 @@
 </style>
 <body>
     <ul class="box">
-        <% usuario.forEach(function(user){ %>
+      
             <li class="box">
 
                 <form action="/edit" method="POST">
-                    <input type="hidden" name="id" value="<%= user._id %>">
-                    <input  name="Nome" value="<%= user.Nome %>">
-                    <input  name="Sobrenome" value="<%= user.Sobrenome %>">
+                    <input type="hidden" name="id" value="<%= usuario._id %>">
+                    <input  name="Nome" value="<%= usuario.Nome %>">
+                    <input  name="Sobrenome" value="<%= usuario.Sobrenome %>">
                     <button type="submit" class="btn btn-danger mt-3"> Mudar</button>
             </li>
-        <% }); %>
+
     </ul>
 
 
     <a href="/criar">Create</a>
     <a href="/ler">  Read  </a>
-    <a href="/mudar">  Uptade  </a>
+    <a href="/mudar" id="one">  Uptade  </a>
     <a href="/deletar">  Delete</a>
 </body>
 
 <script>
-    
+    var a = document.getElementById("one")
+
+    a.addEventListener("click", ()=>{
+        alert("Clique em um dos botões mudar")
+    })
 </script>
 </html>
