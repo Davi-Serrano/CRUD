@@ -1,23 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <style>
+        body{
+            
+            display: flex;
+            flex-direction: column;
+            align-items: center;     
+            border: 1px black solid;
+            width: 60%;
+            margin: auto;
+            height: 300px;
+        }
+        h2{
+            margin: 50px 0 0 0;
+        }
+
+        .button{
+            margin-top: 2em;
+            
+        }
+
+        a{
+            margin-right: 5px;
+            background-color: black;
+            border: 1px blue solid;
+            font-size: 25px;
+            text-decoration: none;
+            color: white;
+            padding: 0.2em;
+        }
+    </style>
+
+
 <body>
-    <h2>Registrar<h2>
+    <h2>Registrar<h2></h2>
+        
         <form action="/show" method="POST">
             <input type="text" placeholder="Nome" name="nome">
             <input type="text" placeholder="Sobrenome" name="sobrenome">
             <button type="submit">Submit</button>
         </form> 
         
-        <a href="/criar">Create</a>
-        <a href="/ler">  Read  </a>
-        <a href="#" id="one">  Uptade  </a>
-        <a href="/deletar">  Delete</a>
+
+
+        <div class="button">
+
+            <a href="/">Create</a>
+            <a href="/ler">  Read  </a>
+            <a href="#" id="one">  Uptade  </a>
+            <a href="/deletar">  Delete</a>
+        </div>
     </body>
     
     <script>

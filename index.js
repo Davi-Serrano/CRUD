@@ -20,7 +20,7 @@ mongoose.connect('mongodb://localhost/CRUD', {useNewUrlParser: true, useUnifiedT
 })
 
 //Pag que posta
-app.get('/criar',  (req, res) => {
+app.get('/',  (req, res) => {
     res.render( '../views/index');
 })
  //Posta 
